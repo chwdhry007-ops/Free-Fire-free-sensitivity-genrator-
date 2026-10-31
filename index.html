@@ -1,176 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FF Ultra Pro AI Sensitivity & DPI Engine (No-Recoil Auto-Lock)</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background: #0b0b0d; color: #f1f1f1; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .wrapper { max-width: 650px; width: 100%; background: #141419; border: 2px solid #ff3e00; border-radius: 16px; padding: 30px; box-shadow: 0 0 30px rgba(255, 62, 0, 0.25); }
-        h1 { text-align: center; color: #ff3e00; font-size: 26px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
-        .subtitle { text-align: center; color: #8a8a93; font-size: 13px; margin-bottom: 25px; text-transform: uppercase; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 6px; font-weight: 600; color: #c5c5d2; font-size: 13px; text-transform: uppercase; }
-        select { width: 100%; padding: 12px; background: #1f1f26; border: 1px solid #3a3a47; border-radius: 8px; color: #fff; font-size: 15px; outline: none; transition: 0.3s; }
-        select:focus { border-color: #ff3e00; box-shadow: 0 0 8px rgba(255, 62, 0, 0.2); }
-        .btn-engine { width: 100%; padding: 16px; background: linear-gradient(135deg, #ff3e00, #ff6200); border: none; border-radius: 8px; color: #fff; font-size: 16px; font-weight: bold; margin-top: 15px; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-engine:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 62, 0, 0.4); }
-        .dashboard { display: none; margin-top: 30px; background: #1a1a22; border: 1px solid #ff3e00; padding: 20px; border-radius: 12px; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .dash-title { color: #00ff66; font-size: 18px; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #2d2d3a; padding-bottom: 5px; text-align: center; }
-        .metric-group { margin-bottom: 20px; }
-        .metric-title { font-size: 14px; color: #ff9900; margin-bottom: 8px; font-weight: bold; text-transform: uppercase; }
-        .stat-row { display: flex; justify-content: space-between; padding: 8px 12px; background: #22222b; margin-bottom: 6px; border-radius: 6px; font-size: 14px; }
-        .stat-row span:last-child { font-weight: bold; color: #00ffcc; }
-        .spec-highlight { color: #ff3e00 !important; }
-        .config-box { background: #111116; border-left: 4px solid #00ffcc; padding: 12px; font-family: monospace; font-size: 12px; color: #a4a4b5; white-space: pre-line; margin-top: 10px; border-radius: 0 6px 6px 0; }
-        .disclaimer { margin-top: 20px; font-size: 11px; color: #71717a; text-align: center; line-height: 1.5; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF Sensi Pro | Device Optimizer</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    background: #090d16;
+    color: #f5f7ff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 760px;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    padding: 24px 12px;
+    background: #141d30;
+    border: 1px solid #ff6a00;
+    border-radius: 18px;
+    margin-bottom: 18px;
+}
+
+header h1 {
+    color: #ff9b35;
+    font-size: 27px;
+    margin: 0 0 10px;
+}
+
+header p {
+    color: #bdc8df;
+    line-height: 1.5;
+}
+
+.card {
+    background: #141b2a;
+    border: 1px solid #293751;
+    border-radius: 15px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+h2 {
+    color: #ffad47;
+    font-size: 19px;
+    margin-top: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+}
+
+.field {
+    margin-bottom: 13px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #c9d5ed;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #394964;
+    border-radius: 9px;
+    background: #0c1321;
+    color: white;
+    font-size: 14px;
+    min-width: 0;
+}
+
+input:focus, select:focus {
+    outline: 1px solid #ff8b24;
+    border-color: #ff8b24;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 9px;
+    background: linear-gradient(120deg, #ff6a00, #ffae32);
+    color: #111;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+button:active {
+    transform: scale(.99);
+}
+
+.secondary {
+    background: #25344d;
+    color: white;
+}
+
+#results {
+    display: none;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 10px;
+    margin-bottom: 7px;
+    background: #0c1423;
+    border-radius: 8px;
+}
+
+.stat span:first-child {
+    color: #c9d5ed;
+    font-size: 14px;
+}
+
+.stat strong {
+    color: #45ffd0;
+    text-align: right;
+}
+
+.note {
+    color: #aebbd1;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 9px;
+    border-radius: 7px;
+    background: #273951;
+    color: #79e8ff;
+    margin: 3px;
+    font-size: 12px;
+}
+
+footer {
+    text-align: center;
+    color: #8290a8;
+    font-size: 12px;
+    padding: 18px 5px;
+}
+
+@media(max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+}
+</style>
 </head>
+
 <body>
+<div class="container">
 
-<div class="wrapper">
-    <h1>AI Sensi Engine v4.0 🎯</h1>
-    <div class="subtitle">Next-Gen No-Recoil & Auto-Headshot Optimizer</div>
+<header>
+    <h1>🔥 FF SENSI PRO</h1>
+    <p>Device-Based Sensitivity & Performance Guide</p>
+    <span class="badge">All Devices</span>
+    <span class="badge">All Guns</span>
+    <span class="badge">HUD Guide</span>
+</header>
 
-    <div class="grid-2">
-        <div class="form-group">
-            <label for="brand">Device Brand</label>
-            <select id="brand">
-                <option value="xiaomi">Xiaomi / Redmi / Poco</option>
-                <option value="samsung">Samsung</option>
-                <option value="realme">Realme / Oppo / OnePlus</option>
-                <option value="vivo">Vivo / iQOO</option>
-                <option value="infinix">Infinix / Tecno</option>
-                <option value="motorola">Motorola / Google Pixel</option>
-                <option value="apple">Apple iPhone / iPad</option>
-                <option value="asus">Asus ROG / Gaming Phones</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="fps">Target Game FPS</label>
-            <select id="fps">
-                <option value="30">30 FPS (Low/Laggy)</option>
-                <option value="60" selected>60 FPS (Standard/Smooth)</option>
-                <option value="90">90 FPS (High Refresh Rate)</option>
-                <option value="120">120 FPS (Ultra Gaming)</option>
-            </select>
-        </div>
+<div class="card">
+<h2>📱 Device Configuration</h2>
+
+<div class="grid">
+    <div class="field">
+        <label for="brand">DEVICE BRAND</label>
+        <select id="brand">
+            <option value="realme">Realme</option>
+            <option value="redmi">Redmi</option>
+            <option value="poco">POCO</option>
+            <option value="samsung">Samsung</option>
+            <option value="vivo">Vivo</option>
+            <option value="iqoo">iQOO</option>
+            <option value="oppo">OPPO</option>
+            <option value="oneplus">OnePlus</option>
+            <option value="motorola">Motorola</option>
+            <option value="infinix">Infinix</option>
+            <option value="tecno">Tecno</option>
+            <option value="google">Google Pixel</option>
+            <option value="apple">Apple iPhone/iPad</option>
+            <option value="asus">ASUS ROG</option>
+            <option value="other">Other</option>
+        </select>
     </div>
 
-    <div class="grid-2">
-        <div class="form-group">
-            <label for="ram">Device RAM</label>
-            <select id="ram">
-                <option value="2">2 GB</option>
-                <option value="3">3 GB</option>
-                <option value="4" selected>4 GB</option>
-                <option value="6">6 GB</option>
-                <option value="8">8 GB</option>
-                <option value="12">12 GB or Higher</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="rom">Internal Storage (ROM)</label>
-            <select id="rom">
-                <option value="32">32 GB</option>
-                <option value="64">64 GB</option>
-                <option value="128" selected>128 GB</option>
-                <option value="256">256 GB or Higher</option>
-            </select>
-        </div>
+    <div class="field">
+        <label for="model">PHONE MODEL</label>
+        <input id="model" placeholder="e.g. Realme P4x">
     </div>
 
-    <div class="grid-2">
-        <div class="form-group">
-            <label for="fingers">Playing Style</label>
-            <select id="fingers">
-                <option value="2">2 Fingers Thumb Player</option>
-                <option value="3">3 Fingers Claw Player</option>
-                <option value="4">4+ Fingers Pro Claw</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="gun">Primary Weapon Priority</label>
-            <select id="gun">
-                <option value="all" selected>All Guns Balanced</option>
-                <option value="smg">SMG (MP40, UMP, Thompson)</option>
-                <option value="ar">AR Drag (AK, M4A1, Scar)</option>
-                <option value="shotgun">One-Tap Shotguns (M1887, Desert Eagle)</option>
-                <option value="sniper">Sniper Quick-Scope (AWM, M82B)</option>
-            </select>
-        </div>
+    <div class="field">
+        <label for="ram">RAM</label>
+        <select id="ram">
+            <option value="2">2 GB</option>
+            <option value="3">3 GB</option>
+            <option value="4" selected>4 GB</option>
+            <option value="6">6 GB</option>
+            <option value="8">8 GB</option>
+            <option value="12">12 GB</option>
+            <option value="16">16 GB</option>
+            <option value="24">24 GB</option>
+        </select>
     </div>
 
-    <button class="btn-engine" onclick="calculateUltraEngine()">Inject Algorithm & Generate 🚀</button>
+    <div class="field">
+        <label for="rom">STORAGE</label>
+        <select id="rom">
+            <option>32 GB</option>
+            <option>64 GB</option>
+            <option selected>128 GB</option>
+            <option>256 GB</option>
+            <option>512 GB</option>
+            <option>1 TB</option>
+            <option>Other</option>
+        </select>
+    </div>
 
-    <div class="dashboard" id="outputDashboard">
-        <div class="dash-title">🚀 Algorithm Execution Complete</div>
-        
-        <div class="metric-group">
-            <div class="metric-title">In-Game Sensitivity Settings</div>
-            <div class="stat-row"><span>General Sensi:</span><span id="resGen">0</span></div>
-            <div class="stat-row"><span>Red Dot:</span><span id="resRed">0</span></div>
-            <div class="stat-row"><span>2x Scope:</span><span id="res2x">0</span></div>
-            <div class="stat-row"><span>4x Scope:</span><span id="res4x">0</span></div>
-            <div class="stat-row"><span>Sniper Scope:</span><span id="resSniper">0</span></div>
-            <div class="stat-row"><span>Free Look:</span><span id="resLook">90</span></div>
-        </div>
+    <div class="field">
+        <label for="cpu">PROCESSOR</label>
+        <input id="cpu" placeholder="e.g. Snapdragon 6 Gen 1">
+    </div>
 
-        <div class="metric-group">
-            <div class="metric-title">Hardware & UI Calibrations</div>
-            <div class="stat-row"><span>Perfect System DPI:</span><span id="resDpi" class="spec-highlight">0</span></div>
-            <div class="stat-row"><span>Fire Button Size & Position:</span><span id="resFire" class="spec-highlight">0</span></div>
-            <div class="stat-row"><span>Touch Response Delay:</span><span id="resTouch">0ms</span></div>
-            <div class="stat-row"><span>Pointer Speed Level:</span><span id="resPointer">Max</span></div>
-        </div>
+    <div class="field">
+        <label for="gpu">GPU</label>
+        <input id="gpu" placeholder="e.g. Adreno 710">
+    </div>
 
-        <div class="metric-group">
-            <div class="metric-title">Auto-Head Lock No-Recoil Module</div>
-            <div class="stat-row"><span>Aim Lock Calibration:</span><span>99.8% Optimized</span></div>
-            <div class="config-box" id="resConfig">Config string loading...</div>
-        </div>
-        
-        <div class="disclaimer">
-            ⚠️ <strong>Pro Anti-Lag Note:</strong> Low devices me smoothness maintain rakhne ke liye game ke display settings ko 'Smooth' ya 'Standard' par rakhein aur High FPS active karein. System DPI change karne se pehle default settings ka note bana lein.
-        </div>
+    <div class="field">
+        <label for="refresh">SCREEN REFRESH RATE</label>
+        <select id="refresh">
+            <option value="60">60 Hz</option>
+            <option value="90">90 Hz</option>
+            <option value="120" selected>120 Hz</option>
+            <option value="144">144 Hz</option>
+            <option value="165">165 Hz</option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="fps">TARGET GAME FPS</label>
+        <select id="fps">
+            <option value="30">30 FPS</option>
+            <option value="40">40 FPS</option>
+            <option value="60" selected>60 FPS</option>
+            <option value="90">90 FPS</option>
+            <option value="120">120 FPS</option>
+        </select>
+    </div>
+</div>
+<p class="note">Note: FPS selection is your target, not a guarantee that the game or phone supports it.</p>
+</div>
+
+<div class="card">
+<h2>🎮 Playing Configuration</h2>
+
+<div class="grid">
+    <div class="field">
+        <label for="fingers">FINGER LAYOUT</label>
+        <select id="fingers">
+            <option value="2">2 Finger</option>
+            <option value="3" selected>3 Finger</option>
+            <option value="4">4 Finger</option>
+            <option value="5">5 Finger</option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="style">PLAYING STYLE</label>
+        <select id="style">
+            <option value="balanced">Balanced</option>
+            <option value="drag">Drag Headshots</option>
+            <option value="onetap">One-Tap Focus</option>
+            <option value="rush">Rusher</option>
+            <option value="sniper">Sniper</option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="gun">WEAPON CATEGORY</label>
+        <select id="gun">
+            <option value="all">All Guns</option>
+            <option value="smg">SMG: MP40, UMP, Vector</option>
+            <option value="ar">AR: AK, M4A1, SCAR</option>
+            <option value="shotgun">Shotguns: M1887, M1014</option>
+            <option value="pistol">Pistols: Desert Eagle</option>
+            <option value="marksman">Marksman: AC80, SKS</option>
+            <option value="sniper">Snipers: AWM, M82B</option>
+            <option value="lmg">LMG: M60, M249</option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="touch">TOUCH CONTROL</label>
+        <select id="touch">
+            <option value="normal">Normal</option>
+            <option value="fast">Fast Drag</option>
+            <option value="steady">Steady Aim</option>
+        </select>
     </div>
 </div>
 
+<button type="button" id="generate">GENERATE MY SETTINGS 🚀</button>
+</div>
+
+<div class="card" id="results">
+<h2>🎯 Your Suggested Profile</h2>
+
+<div id="deviceSummary" class="note"></div>
+<br>
+
+<div class="stat"><span>General</span><strong id="general"></strong></div>
+<div class="stat"><span>Red Dot</span><strong id="red"></strong></div>
+<div class="stat"><span>2x Scope</span><strong id="scope2"></strong></div>
+<div class="stat"><span>4x Scope</span><strong id="scope4"></strong></div>
+<div class="stat"><span>Sniper Scope</span><strong id="sniper"></strong></div>
+<div class="stat"><span>Free Look</span><strong id="look"></strong></div>
+
+<h2 style="margin-top:22px">⚙️ Device Recommendations</h2>
+<div class="stat"><span>DPI starting suggestion</span><strong id="dpi"></strong></div>
+<div class="stat"><span>Fire Button Size</span><strong id="fire"></strong></div>
+<div class="stat"><span>Graphics suggestion</span><strong id="graphics"></strong></div>
+<div class="stat"><span>FPS recommendation</span><strong id="fpsResult"></strong></div>
+<div class="stat"><span>HUD layout</span><strong id="hud"></strong></div>
+<div class="stat"><span>Weapon profile</span><strong id="weaponResult"></strong></div>
+
+<h2 style="margin-top:22px">🎯 Aim Improvement</h2>
+<div id="aimAdvice" class="note"></div>
+
+<h2 style="margin-top:22px">📋 Your Profile</h2>
+<div id="config" class="note"></div>
+
+<button type="button" id="copy">COPY ALL SETTINGS</button>
+<button type="button" class="secondary" id="reset">RESET</button>
+
+<p class="note" style="margin-top:15px">
+These are estimated starting points, not measured device calibrations.
+Aim-lock, automatic headshots and zero recoil are not provided.
+Tune settings in training mode to find what works for you.
+</p>
+</div>
+
+<footer>
+Fan-made sensitivity guide. Not affiliated with Garena.
+No game modifications or cheats.
+</footer>
+
+</div>
+
 <script>
-function calculateUltraEngine() {
-    // Input parameters fetch
-    const brand = document.getElementById("brand").value;
-    const fps = parseInt(document.getElementById("fps").value);
-    const ram = parseInt(document.getElementById("ram").value);
-    const rom = parseInt(document.getElementById("rom").value);
-    const fingers = parseInt(document.getElementById("fingers").value);
-    const gun = document.getElementById("gun").value;
+"use strict";
 
-    let baseGen = 180, baseRed = 175, base2x = 165, base4x = 155, baseSniper = 90;
-    let dpiVal = 420, fireSize = 48, touchDelay = "Minimum";
+const $ = id => document.getElementById(id);
 
-    // 1. Hardware Capacity Matrix Tuning (RAM + ROM Analysis for Smoothness vs Stability)
+function generateSettings() {
+    const brand = $("brand").value;
+    const model = $("model").value.trim() || "Unspecified device";
+    const ram = Number($("ram").value);
+    const rom = $("rom").value;
+    const cpu = $("cpu").value.trim() || "Not specified";
+    const gpu = $("gpu").value.trim() || "Not specified";
+    const refresh = Number($("refresh").value);
+    const requestedFps = Number($("fps").value);
+    const fingers = Number($("fingers").value);
+    const style = $("style").value;
+    const gun = $("gun").value;
+    const touch = $("touch").value;
+
+    // Conservative starting profile; not device benchmarking.
+    let general, red, scope2, scope4, sniper;
+    let dpi, fire;
+
     if (ram <= 3) {
-        // Low End Logic: Optimize to avoid stutters while maximizing flick speeds
-        baseGen = 195; baseRed = 190; base2x = 180; base4x = 175; baseSniper = 100;
-        dpiVal = "Default (Use Max Pointer Speed)";
-        fireSize = 42; 
-        touchDelay = "Low System Priority (Lag Compensation Active)";
-    } else if (ram == 4 || ram == 6) {
-        // Mid End Logic
-        baseGen = 182; baseRed = 176; base2x = 168; base4x = 160;
-        dpiVal = (brand === "samsung") ? 460 : 440;
-        fireSize = 46;
-        touchDelay = "Optimized (0.05ms)";
+        general = 175;
+        red = 165;
+        scope2 = 150;
+        scope4 = 135;
+        sniper = 80;
+        dpi = 400;
+        fire = 48;
+    } else if (ram <= 6) {
+        general = 180;
+        red = 170;
+        scope2 = 155;
+        scope4 = 140;
+        sniper = 80;
+        dpi = 440;
+        fire = 47;
     } else {
-        // High End Device / Gaming Core
-        baseGen = 168; baseRed = 162; base2x = 150; base4x = 142;
-        dpiVal = (brand === "apple") ? "Default (No DPI needed)" : 510;
-        fireSize = 52;
-        touchDelay = "Instantaneous Latency (0.01ms)";
+        general = 175;
+        red = 165;
+        scope2 = 150;
+        scope4 = 135;
+        sniper = 75;
+        dpi = 480;
+        fire = 45;
     }
 
-  
+    if (style === "drag") {
+        general += 8;
+        red += 7;
+    }
+
+    if (style === "onetap") {
+        general += 4;
+        red += 5;
+        fire += 1;
+    }
+
+    if (style === "rush") {
+        general += 5;
+        red += 3;
+    }
+
+    if (style === "sniper") {
+        general -= 8;
+        red -= 5;
+        scope4 += 5;
+        sniper += 8;
+    }
+
+    if (touch === "fast") {
+        general += 4;
+        red += 3;
+    }
+
+    if (touch === "steady") {
+        general -= 5;
+        red -= 3;
+    }
+
+    if (gun === "smg" || gun === "shotgun" || gun === "pistol") {
+        general += 3;
+    }
+
+    if (gun === "marksman" || gun === "ar") {
+        scope2 += 3;
+        scope4 += 2;
+    }
+
+    if (gun === "sniper") {
+        scope4 += 3;
+        sniper += 5;
+    }
+
+    if (fingers >= 4) {
+        fire -= 2;
+    }
+
+    // Clamp sensitivity to the commonly used 0-200 range.
+    general = clamp(general, 0, 200);
+    red = clamp(red, 0, 200);
+    scope2 = clamp(scope2, 0, 200);
+    scope4 = clamp(scope4, 0, 200);
+    sniper = clamp(sniper, 0, 200);
+    fire = clamp(fire, 30, 70);
+
+    // FPS is capped by the requested target and display refresh rate.
+    const fpsSuggestion = Math.min(requestedFps, refresh);
+
+    let graphics;
+    if (ram <= 3) {
+        graphics = "Smooth / lowest available";
+    } else if (ram <= 6) {
+        graphics = "Smooth / Standard";
+    } else {
+        graphics = "Test Smooth or Standard first";
+    }
+
+    let dpiText = brand === "apple"
+        ? "Not user-adjustable"
+        : dpi + " starting point";
+
+    $("general").textContent = general;
+    $("red").textContent = red;
+    $("scope2").textContent = scope2;
+    $("scope4").textContent = scope4;
+    $("sniper").textContent = sniper;
+    $("look").textContent = 90;
+
+    $("dpi").textContent = dpiText;
+    $("fire").textContent = fire + "%";
+    $("graphics").textContent = graphics;
+    $("fpsResult").textContent =
+        fpsSuggestion + " FPS target (support dependent)";
+    $("hud").textContent = fingers + "-finger layout";
+    $("weaponResult").textContent =
+        $("gun").selectedOptions[0].textContent;
+
+    $("deviceSummary").textContent =
+        "Device: " + model + " | Brand: " + brand +
+        " | RAM: " + ram + " GB | Storage: " + rom +
+        " | Display: " + refresh + " Hz";
+
+    let advice =
+        "Use training mode to test drag distance and tracking. " +
+        "Keep your crosshair near the upper body before dragging. " +
+        "Change one setting at a time and compare results.";
+
+    if (style === "onetap") {
+        advice += " One-tap profile: use short, controlled upward drags.";
+    } else if (style === "drag") {
+        advice += " Drag profile: practice consistent swipe length and timing.";
+    } else if (style === "sniper") {
+        advice += " Sniper profile: prioritize controlled scope movement.";
+    }
+
+    $("aimAdvice").textContent = advice;
+
+    const config = [
+        "DEVICE: " + model,
+        "BRAND: " + brand,
+        "PROCESSOR: " + cpu,
+        "GPU: " + gpu,
+        "RAM: " + ram + " GB",
+        "STORAGE: " + rom,
+        "REFRESH RATE: " + refresh + " Hz",
+        "TARGET FPS: " + fpsSuggestion,
+        "FINGERS: " + fingers,
+        "PLAY STYLE: " + style,
+        "WEAPON: " + gun,
+        "",
+        "GENERAL: " + general,
+        "RED DOT: " + red,
+        "2X SCOPE: " + scope2,
+        "4X SCOPE: " + scope4,
+        "SNIPER: " + sniper,
+        "FREE LOOK: 90",
+        "DPI: " + dpiText,
+        "FIRE BUTTON: " + fire + "%",
+        "GRAPHICS: " + graphics,
+        "",
+        "Estimated starting settings; test and adjust in game."
+    ].join("\n");
+
+    $("config").textContent = config;
+    $("results").style.display = "block";
+    $("results").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+}
+
+async function copySettings() {
+    const text = $("config").textContent;
+
+    try {
+        await navigator.clipboard.writeText(text);
+        $("copy").textContent = "COPIED ✓";
+    } catch (error) {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+
+        const successful = document.execCommand("copy");
+        area.remove();
+
+        $("copy").textContent = successful
+            ? "COPIED ✓"
+            : "COPY FAILED — SELECT TEXT MANUALLY";
+    }
+
+    setTimeout(() => {
+        $("copy").textContent = "COPY ALL SETTINGS";
+    }, 2000);
+}
+
+$("generate").addEventListener("click", generateSettings);
+$("copy").addEventListener("click", copySettings);
+
+$("reset").addEventListener("click", () => {
+    $("results").style.display = "none";
+    $("model").value = "";
+    $("cpu").value = "";
+    $("gpu").value = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
+</body>
+    </html>
