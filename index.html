@@ -3,156 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERO RECOIL - GOD LEVEL SENSI DATABASE</title>
+    <title>VIP HACKERX SENSI ENGINE v4.0</title>
+    <!-- Premium Gaming Fonts -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Orbitron:wght@500;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #050508;
-            --panel-bg: #0e1118;
-            --neon-glow: #00ff66;
-            --neon-red: #ff003c;
-            --neon-yellow: #ffcc00;
-            --text-main: #e2e8f0;
+            --bg-dark: #05070f;
+            --panel-bg: #0d1222;
+            --neon-red: #ff0055;
+            --neon-cyan: #00f3ff;
+            --neon-yellow: #ffea00;
+            --text-white: #f1f5f9;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Orbitron', 'Segoe UI', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-main);
-            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), url('https://unsplash.com');
-            background-size: cover;
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(at 50% 0%, rgba(255, 0, 85, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(0, 243, 255, 0.1) 0px, transparent 40%);
             background-attachment: fixed;
+            overflow-x: hidden;
+            letter-spacing: 0.5px;
         }
 
         header {
-            background: linear-gradient(180deg, #121620 0%, var(--bg-dark) 100%);
-            padding: 40px 15px;
-            border-bottom: 2px solid var(--neon-glow);
             text-align: center;
-            box-shadow: 0 5px 30px rgba(0, 255, 102, 0.2);
+            padding: 40px 15px;
+            border-bottom: 2px dashed rgba(0, 243, 255, 0.3);
+            background: rgba(13, 18, 34, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.2);
         }
 
         h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
             margin: 0;
-            font-size: 3rem;
             color: #fff;
-            text-shadow: 0 0 15px var(--neon-glow), 0 0 30px var(--neon-glow);
-            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--neon-red), 0 0 30px var(--neon-red);
+            letter-spacing: 3px;
         }
 
-        .alert-banner {
-            background: rgba(255, 0, 60, 0.15);
-            border: 1px solid var(--neon-red);
-            padding: 10px;
-            margin: 20px auto;
-            max-width: 800px;
-            border-radius: 5px;
-            color: #ff99ab;
-            font-weight: bold;
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-cyan);
             font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-top: 8px;
+            text-shadow: 0 0 8px var(--neon-cyan);
         }
 
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-        .panel {
+        .panel-card {
             background: var(--panel-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.2);
             border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
         }
 
-        .grid-2 {
+        .panel-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--neon-red), var(--neon-cyan));
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--neon-yellow);
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid var(--neon-yellow);
+            padding-left: 10px;
+        }
+
+        .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+            margin-bottom: 15px;
         }
 
-        @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
+        @media(max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
         }
 
         label {
-            display: block;
+            font-size: 1rem;
+            color: #94a3b8;
             margin-bottom: 8px;
-            font-weight: 600;
-            color: #a0aec0;
             text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+            font-weight: 700;
         }
 
-        select, input {
-            width: 100%;
+        select {
             padding: 14px;
-            background: #07090e;
-            border: 1px solid #2d3748;
+            background: #060916;
+            border: 1px solid #1e294b;
             border-radius: 8px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            outline: none;
+            transition: 0.3s;
             box-sizing: border-box;
-            transition: all 0.3s;
         }
 
         select:focus {
-            border-color: var(--neon-glow);
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
-            outline: none;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
         }
 
-        .btn-trigger {
+        .btn-inject {
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(90deg, #00ff66, #00cc52);
-            color: #000;
+            padding: 16px;
+            background: linear-gradient(90deg, var(--neon-red), #cc0044);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.3rem;
             font-weight: 900;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            text-transform: uppercase;
+            margin-top: 15px;
             letter-spacing: 2px;
-            margin-top: 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
-            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+            transition: 0.3s;
         }
 
-        .btn-trigger:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 35px var(--neon-glow);
+        .btn-inject:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--neon-red);
         }
 
-        /* Loading Screen Simulation */
-        .loading-box {
+        .loader-wrapper {
             display: none;
-            margin: 20px 0;
             text-align: center;
+            margin: 20px 0;
         }
-        .bar-bg {
-            background: #1a202c;
-            height: 10px;
-            border-radius: 5px;
+
+        .loading-text {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-yellow);
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: #060916;
+            height: 12px;
+            border-radius: 6px;
             overflow: hidden;
-            margin-top: 10px;
+            border: 1px solid #1e294b;
         }
-        .bar-fill {
-            background: var(--neon-yellow);
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-yellow));
             height: 100%;
             width: 0%;
-            transition: width 1.5s linear;
+            transition: width 0.1s linear;
         }
 
-        /* Results Styling */
-        .results-panel {
+        .results-box {
             display: none;
-            border: 2px solid var(--neon-glow);
-            animation: glowPulse 2s infinite alternate;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.25);
+            animation: panelFade 0.4s ease-out;
+        }
+
+        @keyframes panelFade {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .output-row {
@@ -160,127 +210,124 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid #1e294b;
         }
 
         .output-row:last-child { border: none; }
 
-        .val-badge {
-            background: #1a202c;
-            color: var(--neon-glow);
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border: 1px solid rgba(0, 255, 102, 0.3);
+        .output-info h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #fff;
         }
 
-        .brazil-code {
-            background: #000;
+        .output-info p {
+            margin: 3px 0 0 0;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .value-action {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .val-display {
+            background: #060916;
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            padding: 6px 14px;
+            border-radius: 6px;
+            min-width: 60px;
+            text-align: center;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .btn-copy {
+            background: #1e293b;
+            color: #fff;
+            border: 1px solid #334155;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .btn-copy:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            border-color: var(--neon-cyan);
+        }
+
+        .regedit-block {
+            background: #02040a;
+            border: 1px dashed var(--neon-yellow);
             padding: 15px;
             border-radius: 8px;
-            border: 1px dashed var(--neon-yellow);
             font-family: monospace;
             color: var(--neon-yellow);
             font-size: 0.9rem;
-            margin-top: 10px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            word-break: break-all;
         }
 
-        /* Strategy cards */
-        .tab-box {
-            background: #121722;
+        .trick-card {
+            background: #0b0f23;
             border-left: 4px solid var(--neon-red);
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 0 8px 8px 0;
         }
 
-        .tab-box h4 { margin: 0 0 5px 0; color: #fff; }
+        .trick-card h5 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .trick-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>⚡ GOD LEVEL SENSI ENGINE ⚡</h1>
-        <div style="color: var(--neon-yellow); font-weight: bold; margin-top: 8px;">ANTI-RECOIL // BRAZILIAN REGEDIT TWEAKS // 1000% ACCURACY</div>
+        <h1>⚡ HACKERX VIP ENGINE ⚡</h1>
+        <div class="subtitle">BRAZIL REGEDIT // BYPASS RECOIL SYSTEM // v4.0 PRO</div>
     </header>
-
-    <div class="alert-banner">
-        ⚠️ ALERT: Yeh bypass algorithm paid premium sensitivity files aur VIP panels ko beat karne ke liye banaya gaya hai.
-    </div>
 
     <div class="container">
         
-        <!-- Input Configurations -->
-        <div class="panel">
-            <div class="grid-2">
-                <div>
-                    <label>Aapka Device Kya Hai?</label>
-                    <select id="brand">
-                        <option value="samsung">Samsung (All Galaxy Devices)</option>
+        <!-- Setup Inputs Container -->
+        <div class="panel-card">
+            <div class="section-title">Device & Playstyle Configurator</div>
+            
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="device">Target Hardware</label>
+                    <select id="device">
+                        <option value="samsung">Samsung (Galaxy Pro Tier)</option>
                         <option value="xiaomi">Xiaomi / Redmi / POCO</option>
                         <option value="realme">Realme / Oppo / Vivo</option>
-                        <option value="oneplus">OnePlus / IQOO / Nothing</option>
-                        <option value="iphone">iPhone / iPad (iOS Elite)</option>
-                        <option value="emulator">PC / Laptop (BlueStacks / MSI)</option>
-                        <option value="potato">Low RAM Spec (2GB-4GB Phone)</option>
+                        <option value="oneplus">OnePlus / IQOO Flagship</option>
+                        <option value="iphone">iPhone / iPad (iOS Native)</option>
+                        <option value="lowend">Low RAM Device (2GB-4GB Fix)</option>
                     </select>
                 </div>
-                <div>
-                    <label>Gaming Style Mode</label>
-                    <select id="mode">
-                        <option value="brazil">Brazilian Drag (Ultra Speed Aim Lock)</option>
-                        <option value="ruok">Ruok FF Magic Bullet (Auto Tracker)</option>
-                        <option value="white444">White444 Classic (One-Tap Dominator)</option>
-                        <option value="stable">Safe Hacker Mode (Natural 100% Red Shots)</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="grid-2" style="margin-top: 20px;">
-                <div>
-                    <label>Primary Gun Category</label>
-                    <select id="gun">
-                        <option value="smg">SMG (MP40, M1014, Thompson)</option>
-                        <option value="ar">AR Rifle (AK47, SCAR, Woodpecker)</option>
-                        <option value="shotgun">One-Tap Shotguns (M1887, Desert Eagle)</option>
-                    </select>
-                </div>
-                <div>
-                    <label>In-Game Refresh Rate</label>
-                    <select id="fps">
-                        <option value="60">60 Hz Standard</option>
-                        <option value="90">90 Hz Smooth</option>
-                        <option value="120">120 Hz Pro Display</option>
-                        <option value="144">144 Hz+ Ultra Gaming</option>
-                    </select>
-                </div>
-            </div>
-
-            <button class="btn-trigger" onclick="runEngine()">Inject Custom Values</button>
-        </div>
-
-        <!-- Simulation Progress Box -->
-        <div class="panel loading-box" id="loader">
-            <div style="font-weight: bold; color: var(--neon-yellow);" id="loadText">Analyzing Device Hardware Modules...</div>
-            <div class="bar-bg"><div class="bar-fill" id="bar"></div></div>
-        </div>
-
-        <!-- System Output Configs -->
-        <div class="panel results-panel" id="results">
-            <h2 style="margin-top:0; color: #fff; border-bottom: 2px solid #2d3748; padding-bottom: 10px;">🔴 SYSTEM TWEAK LOADED SUCCESSFULLY</h2>
-            
-            <div class="output-row">
-                <div><strong>General Sensitivity</strong><br><small style="color:#718096;">Screen movement & rapid 360 drags</small></div>
-                <div class="val-badge" id="vGen">99</div>
-            </div>
-            <div class="output-row">
-                <div><strong>Red Dot Sight</strong><br><small style="color:#718096;">Pixel precise auto aim-lock threshold</small></div>
-                <div class="val-badge" id="vRed">95</div>
-            </div>
-            <div class="output-row">
-                <div><strong>Scope Scaling (2x & 4x)</strong><br><small style="color:#718096;">Mid to long range drag synchronization</small></div>
-                <div class="val-badge" id="vScope">98</div>
-            </div>
-            <div class="output-row">
                 
+                <div class="input-group">
+                    <label for="sensiMode">Sensitivity Architecture</label>
+                    <select id="sensiMode">
+                        <option value="brazil">Brazilian Drag (Absolute Headshot)</option>
+                        
